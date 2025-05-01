@@ -69,8 +69,7 @@ The overall approach involved:
 
 ### Figure 2: Performance Comparison Chart
 
-![Model Performance Comparison Chart](path/to/your/results_chart.png)
-*(Replace `path/to/your/results_chart.png` with the actual path to your chart image in the repository, e.g., `images/results_chart.png` or just `results_chart.png` if it's in the root)*
+![Model Performance Comparison Chart](BUG Prioritization using LLM/bert-prioritization-model/results_comparison_chart.png)
 
 * **Highest Accuracy (Original Data):** GPT-3.5 (Prompting) - 72.7%
 * **Best F1-Score (Original Data):** BERT (Fine-tuned) - 75.9%
@@ -103,8 +102,6 @@ The overall approach involved:
 1.  **CodeBERT Experiments:** Open and run the `main.ipynb` notebook in a Jupyter environment. This notebook covers data loading, preprocessing (including SMOTE), feature engineering, CodeBERT fine-tuning, and evaluation.
 2.  **BERT Experiments:** Open and run the `BERT.ipynb` notebook. This covers similar steps but for the standard BERT model without SMOTE.
 3.  **GPT-3.5 Prompting:** *(Describe how to run the GPT-3.5 evaluation. Since this was likely done via API calls or a separate script, provide instructions or the relevant script. If using an API, mention the need for API keys and how to set them, e.g., environment variables).*
-
-*(Adjust the notebook names and descriptions based on your final files)*
 
 ## Citation
 
