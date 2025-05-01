@@ -1,6 +1,3 @@
-# github-issue-prioritization-transformers
-"Comparative study of CodeBERT, BERT, and GPT-3.5 for prioritizing GitHub bug issues using IRT text and repository metadata."
-
 # Automated GitHub Issue Prioritization using Transformer Models
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) Code and resources for the research paper: "Prioritizing Bug Issue Reports in GitHub: A Comparative Study of Transformer Models" by Sameer Khan and Abbas Heydarnoori, Bowling Green State University.
