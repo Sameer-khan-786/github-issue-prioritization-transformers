@@ -29,7 +29,7 @@ We leverage the GIRT-Data dataset, focusing on Java repositories, and utilize Is
 The overall approach involved:
 
 1.  **Data Preparation:** Filtering the GIRT-Data dataset for Java repositories with IRTs, cleaning data, and deriving a binary priority label based on issue activity (median split).
-2.  **Feature Engineering:** Extracting features from repository metadata and IRT structure (See Table 1 in the paper).
+2.  **Feature Engineering:** Extracting features from repository metadata and IRT structure (See Table 1 below).
 3.  **Model Training/Prompting:**
     * Fine-tuning CodeBERT (with/without SMOTE, class weights, freezing).
     * Fine-tuning standard BERT (without SMOTE).
@@ -38,19 +38,44 @@ The overall approach involved:
 
 *(See Figure 1 in the paper for a visual overview)*
 
+### Table 1: Summary of Engineered Features
+
+| Category   | Feature / Description                |
+| :--------- | :----------------------------------- |
+| Repository | Stargazer Count                      |
+|            | Commit Frequency                     |
+|            | Recent Activity (Pushed < 6 mo.)     |
+|            | Contributor Count                    |
+|            | Issue Activity (Open+Closed)         |
+|            | Repository Age (Days)                |
+| IRT        | Has IRT (Boolean)                    |
+|            | IRT Length (Chars)                   |
+|            | Headline Count (Markdown)            |
+
 ## Key Results Summary
 
 *(See Table 2 and Figure 2 in the paper for full details)*
+
+### Table 2: Performance Comparison of Prioritization Models
+
+| Model                       | Accuracy          | Precision         | Recall            | F1-score          | Eval Data  |
+| :-------------------------- | :---------------- | :---------------- | :---------------- | :---------------- | :--------- |
+| CodeBERT (Th=0.55)          | 0.5958            | 0.5818            | 0.6480            | 0.6131            | SMOTE Bal. |
+| CodeBERT (Mod., Th=0.5)     | 0.6173            | 0.6173            | **1.0000** | **0.7634** | SMOTE Bal. |
+| BERT Model                  | 0.6720            | **0.6949** | 0.8353            | 0.7586            | Original   |
+| GPT-3.5 (Airoboros Prompt)  | **0.7270** | 0.6769            | 0.8753            | 0.7566            | Original   |
+
+*Note: Evaluation data indicates whether results are on the SMOTE-balanced validation set or the original validation set.*
+
+### Figure 2: Performance Comparison Chart
+
+![Model Performance Comparison Chart](path/to/your/results_chart.png)
+*(Replace `path/to/your/results_chart.png` with the actual path to your chart image in the repository, e.g., `images/results_chart.png` or just `results_chart.png` if it's in the root)*
 
 * **Highest Accuracy (Original Data):** GPT-3.5 (Prompting) - 72.7%
 * **Best F1-Score (Original Data):** BERT (Fine-tuned) - 75.9%
 * **Highest Recall / F1 (Balanced Data):** Modified CodeBERT - 100% / 76.3%
 * **Finding:** General models (BERT, GPT-3.5) performed competitively or better than specialized CodeBERT on the original, unbalanced data distribution for this task.
-
-## Repository Structure
-
-├── BERT.ipynb             # Jupyter Notebook for BERT fine-tuning & evaluation├── main.ipynb             # Jupyter Notebook for CodeBERT fine-tuning & evaluation├── requirements.txt       # Python dependencies (Create this file)├── data/                    # Placeholder for data files (e.g., CSVs from GIRT-Data - DO NOT COMMIT LARGE DATA)│   └── characteristics_repo.csv   # Example - Describe how to obtain/place data│   └── characteristics_irts_markdown.csv # Example│   └── characteristics_irts_yaml.csv   # Example├── models/                  # Placeholder for saved model checkpoints (Optional, likely too large for Git)│   └── codebert-prioritization-model/│   └── bert-prioritization-model/├── Sameer_Khan_Research_Paper.pdf # Final research paper├── Sameer_Khan_Poster_CS6910_Spring2025.pptx # Presentation Poster└── README.md              # This file
-*(Note: Add/remove files/folders based on your actual structure. Avoid committing large data files or model checkpoints directly to Git; provide instructions on how to obtain them or use Git LFS if necessary.)*
 
 ## Setup & Installation
 
@@ -90,6 +115,6 @@ If you use this code or research, please cite the paper:
   title={Prioritizing Bug Issue Reports in GitHub: A Comparative Study of Transformer Models},
   author={Khan, Sameer and Heydarnoori, Abbas},
   booktitle={To Be Determined}, % Replace with conference/journal name
-  year={2025} % Replace with publication year
+  year={2024} % Corrected year
 }
 (Update the BibTeX entry once the paper is published or if you have a preprint link)LicenseThis project is licensed under the MIT License - see the LICENSE.md file for details. (You will need to add a LICENSE.md file with the MIT license text)ContactSameer Khan - sameerk@bgsu.eduAbbas Heydarnoori - aheydar@bgsu.eduProject Link:
