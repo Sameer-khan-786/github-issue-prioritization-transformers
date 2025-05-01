@@ -66,7 +66,8 @@ The overall approach involved:
 
 ### Figure 2: Performance Comparison Chart
 
-![Model Performance Comparison Chart](BUG Prioritization using LLM/bert-prioritization-model/results_comparison_chart.png)
+![Model Performance Comparison Chart](results_comparison_chart.png)
+
 
 * **Highest Accuracy (Original Data):** GPT-3.5 (Prompting) - 72.7%
 * **Best F1-Score (Original Data):** BERT (Fine-tuned) - 75.9%
